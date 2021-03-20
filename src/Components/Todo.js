@@ -5,7 +5,7 @@ const Todo = ({ text, todo, setTodos, todos }) => {
   const deleteHandler = (e) => {
     const item = e.target.parentElement;
     item.classList.add("fall");
-    item.addEventListener("transitioned", () =>
+    item.addEventListener("transitionend", () =>
       setTodos(todos.filter((el) => el.id !== todo.id))
     );
   };
