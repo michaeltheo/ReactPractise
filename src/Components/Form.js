@@ -1,10 +1,28 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({ setInputText, todos, setTodos, inputText }) => {
+  //information about what happened
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  };
+  const submitTodoHandler = (e) => {
+    e.preventDefault();
+    setTodos([
+      //pare olo ton pinaka kai anoi3 ton ...
+      ...todos,
+      { text: inputText, completed: false, id: Math.random() * 1000 },
+    ]);
+    setInputText("");
+  };
   return (
     <form>
-      <input type="text" className="todo-input" />
-      <button className="todo-button" type="submit">
+      <input
+        value={inputText}
+        onChange={inputTextHandler}
+        type="text"
+        className="todo-input"
+      />
+      <button className="todo-button" type="submit" onClick={submitTodoHandler}>
         <i className="fa fa-plus"></i>
       </button>
       <div className="select">
